@@ -6,9 +6,44 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="">	</head>
 	<body>
-		<h1>INVENTARIO</h1>
+		<h1>INVENTARIO DE PRODUCTOS</h1>
+		<h2>Agregar producto</h2>
 		<div>
-			<p> Nombre del producto: <input type="text" name="Nombre del producto"></p>
+			<form>
+				<label for="Codigo">Código:</label>
+				<input type="number" name="Codigo"><br><br>
+				<label for="Nombre">Nombre:</label>
+				<input type="text" name="Nombre"><br><br>
+				<label for="Cantidad">Cantidad:</label>
+				<input type="number" name="Cantidad"><br><br>
+				<label for="Costo">Costo:</label>
+				<input type="number" name="Costo"><br><br>
+				<input type="submit" value="Agregar">
+			</form>
+		</div>
+		<h2>Buscar producto</h2>
+		<div>
+			<form>
+				<label for="CodigoBusqueda">Ingrese el código:</label>
+				<input type="number" name="CodigoBusqueda"><br><br>
+				<input type="submit" value="Buscar">
+			</form>
+		</div>
+		<h2>Eliminar producto</h2>
+		<div>
+			<form>
+				<label for="CodigoEliminacion">Ingrese el código:</label>
+				<input type="number" name="CodigoEliminacion"><br><br>
+				<input type="submit" value="Eliminar">
+			</form>
+		</div>
+		<h2>Listar productos</h2>
+		<div>
+			<input type="submit" value="Listar">
+		</div>
+		<h2>Listar inverso productos</h2>
+		<div>
+			<input type="submit" value="Listar">
 		</div>
 	<script type="text/javascript" src="app.js"></script>
 	</body>
