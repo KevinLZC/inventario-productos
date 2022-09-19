@@ -1,41 +1,70 @@
-export default class Inventario {
+class Inventario {
 	constructor() {
 		this.productos = [];
 	}
 
 	agregar(nuevo) {
-		this.productos.push(nuevo);
+		if(this.comprobarCodigo(nuevo.codigo)) {
+			this.productos.push(nuevo);
+			return "<p>Se agregó correctamente.</p>"
+		}
+		
+		return "<p>El código del producto está repetido, ingrese otro.</p>"
+	}
+
+	comprobarCodigo(codigo) {
+		for(let i = 0; i < this.productos.length; i++) {
+			if(codigo === this.productos[i].codigo) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	buscar(codigo) {
-		for(let i = 0; i < productos.lenght; i++) {
+		for(let i = 0; i < this.productos.length; i++) {
 			if(codigo === this.productos[i].codigo) {
 				return this.productos[i];
 			}
 		}
+		return null;
 	}
 
 	eliminar(codigo) {
-		let tmp;
-		for (let i = 0; i < this.productos.length; i++) {
+		for(let i = 0; i < this.productos.length; i++) {
 			if(codigo === this.productos[i].codigo) {
-				tmp = this.productos[i];
-				vector[i] === vector[i+1];
+				let tmp = this.productos[i]
+				for(let j = i; j < this.productos.length; j++) {
+					this.productos[i] = this.productos[j+1]
+				}
+				this.productos[this.productos.length - 1] = tmp;
+			} else {
+				return "<p>No existe el producto.</p>"
 			}
 		}
-		this.productos[this.productos.length - 1] = tmp;
-		this.productos.pop();
+		this.productos.pop()
+		return `<p>Se eliminó el producto con el código <strong>${codigo}</strong>.</p>`
 	}
 
 	listar() {
-		for(let i = 0; i < this.productos.length; i++) {
-			this.productos[i].info();
+		let listado = ""
+		if(this.productos.length === 0) {
+			return "<p>No existe ningún producto registrado.</p>"
 		}
+		for(let i = 0; i < this.productos.length; i++) {
+			listado += this.productos[i].infoHTML();
+		}
+		return listado
 	}
 
 	listarInvertido() {
-		for(let i = this.productos.length - 1; i > 0; i--) {
-			this.productos[i].info();
+		let listado = ""
+		if(this.productos.length === 0) {
+			return "<p>No existe ningún producto registrado.</p>"
 		}
+		for(let i = this.productos.length - 1; i >= 0; i--) {
+			listado += this.productos[i].infoHTML();
+		}
+		return listado
 	}
 }
