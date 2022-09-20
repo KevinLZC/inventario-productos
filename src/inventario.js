@@ -34,16 +34,15 @@ class Inventario {
 		for(let i = 0; i < this.productos.length; i++) {
 			if(codigo === this.productos[i].codigo) {
 				let tmp = this.productos[i]
-				for(let j = i; j < this.productos.length; j++) {
-					this.productos[i] = this.productos[j+1]
+				for(let j = i; j < this.productos.length - 1; j++) {
+					this.productos[j] = this.productos[j+1]
 				}
 				this.productos[this.productos.length - 1] = tmp;
-			} else {
-				return "<p>No existe el producto.</p>"
+				this.productos.pop()
+				return `<p>Se eliminó el producto con el código <strong>${codigo}</strong>.</p>`
 			}
 		}
-		this.productos.pop()
-		return `<p>Se eliminó el producto con el código <strong>${codigo}</strong>.</p>`
+			return "<p>No existe el producto.</p>"
 	}
 
 	listar() {
